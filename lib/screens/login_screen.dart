@@ -1,6 +1,7 @@
-import 'package:dissertation_app/theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:dissertation_app/theme.dart';
+import '../components/components.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -9,145 +10,131 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(children: [RegisterPageButton()]),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    'Welcome',
-                    style: TextStyle(
-                      fontSize: 60,
-                      color: AppColors.kTextDark,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 600,
-                    height: 60,
-                    margin: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(5.0)),
-                      color: Colors.blue.shade50,
-                      border: Border.all(
-                        color: AppColors.kButtonBorder,
-                        width: 2,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SafeArea(
+              child: Container(
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 100, vertical: 250),
+                child: Column(
+                  children: [
+                    const Text(
+                      'Welcome',
+                      style: TextStyle(
+                        fontSize: 60,
+                        color: AppColors.kTextDark,
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 12.0),
-                          child: Center(
-                            child: Icon(
+                    const SizedBox(height: 210),
+                    Form(
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 50),
+                          const TextInput(
+                            hintText: 'Your Email Address',
+                            icon: Icon(
                               Icons.email_outlined,
                               color: AppColors.kIconDark,
                               size: 40,
                             ),
                           ),
-                        ),
-                        Center(
-                          widthFactor: 2.3,
-                          child: Text(
-                            'Your Email Address',
-                            style: TextStyle(fontSize: 24),
+                          const SizedBox(height: 50.0),
+                          const TextInput(
+                            hintText: 'Your Password',
+                            icon: Icon(
+                              Icons.vpn_key_outlined,
+                              color: AppColors.kIconDark,
+                              size: 40,
+                            ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 50.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(
+                                style: ThemeHelper().buttonStyle(),
+                                child: const Padding(
+                                  padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                  child: Text(
+                                    'Sign In',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/chats');
+                                },
+                              ),
+                              ElevatedButton(
+                                style: ThemeHelper().buttonStyle(),
+                                child: const Padding(
+                                  padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                  child: Text(
+                                    'Register',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/register');
+                                },
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    Container(
+                      height: 60,
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 0,
+                        vertical: 50,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10.0)),
+                        border: Border.all(
+                          color: AppColors.kButtonBorder,
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.only(left: 20.0),
+                            child: Center(
+                              child: FaIcon(
+                                FontAwesomeIcons.google,
+                                size: 40,
+                                color: AppColors.kIconDark,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Center(
+                              child: Text(
+                                'Sign In with your Google Account',
+                                style: TextStyle(
+                                    fontSize: 20, color: AppColors.kTextDark),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              // Row(),
-              // Row(),
-              // Row(),
-              // Row(),
-              // Row(),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
-class RegisterPageButton extends StatelessWidget {
-  const RegisterPageButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      child: const Text('to register page'),
-      onPressed: () {
-        // Navigator.pop(context);
-        Navigator.pushNamed(context, '/register');
-      },
-    );
-  }
-}
-// Container(
-// color: AppColors.kAppBackground,
-// child: Column(
-// crossAxisAlignment: CrossAxisAlignment.center,
-// mainAxisAlignment: MainAxisAlignment.center,
-// children: [
-// Center(
-// child: Row(
-// crossAxisAlignment: CrossAxisAlignment.center,
-// children: [
-// Container(
-// width: 600,
-// height: 60,
-// decoration: BoxDecoration(
-// borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-// color: Colors.white,
-// border: Border.all(
-// color: AppColors.kButtonBorder,
-// width: 2,
-// ),
-// ),
-// child: Row(
-// children: const [
-// Icon(
-// Icons.email_outlined,
-// color: AppColors.kIconDark,
-// size: 40,
-// ),
-// Text(
-// 'your email address',
-// style: TextStyle(
-// color: AppColors.kTextLight,
-// ),
-// )
-// ],
-// ),
-// ),
-// ],
-// ),
-// ),
-// Row(
-// children: [
-// TextButton(
-// child: const Text('to register page'),
-// onPressed: () {
-// Navigator.pushNamed(context, '/register');
-// },
-// ),
-// ],
-// ),
-// ],
-// ),
-// );
