@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:dissertation_app/theme.dart';
 import 'package:flutter/material.dart';
 
-class ThemeHelper {
+class Helper {
+  static final random = Random();
+
   InputDecoration textInputDecoration(
       [String labelText = "", String hintText = ""]) {
     return InputDecoration(
@@ -30,5 +34,10 @@ class ThemeHelper {
       backgroundColor: MaterialStateProperty.all(AppColors.kPrimaryButtonBg),
       shadowColor: MaterialStateProperty.all(Colors.transparent),
     );
+  }
+
+  static String randomPictureUrl() {
+    final randomInt = random.nextInt(1000);
+    return 'https://picsum.photos/seed/$randomInt/300/300';
   }
 }

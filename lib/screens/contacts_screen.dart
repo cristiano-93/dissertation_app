@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:dissertation_app/theme.dart';
 import '../components/components.dart';
 
-class ChatsScreen extends StatelessWidget {
-  const ChatsScreen({Key? key}) : super(key: key);
+class ContactsScreen extends StatelessWidget {
+  const ContactsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ChatsScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.grey.shade300,
           title: const Text(
-            'Current Page',
+            'Contact List',
             style: TextStyle(
               color: AppColors.kTextDark,
               fontSize: 20,
@@ -47,7 +47,7 @@ class ChatsScreen extends StatelessWidget {
               margin: const EdgeInsets.all(60),
               child: const Center(
                 child: Text(
-                  'Recent Chats',
+                  'Contacts List',
                   style: TextStyle(
                     fontSize: 40,
                     color: AppColors.kTextDark,
@@ -67,33 +67,38 @@ class ChatsScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('All Chats'),
-                      style: TextButton.styleFrom(
-                        textStyle:
-                            const TextStyle(fontSize: 20, color: Colors.white),
-                        backgroundColor: Colors.blue.shade100,
+                    const Text(
+                      'Order by:',
+                      style:
+                          TextStyle(fontSize: 24, color: AppColors.kTextDark),
+                    ),
+                    SizedBox(
+                      width: 160,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'Name',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(
+                            fontSize: 20,
+                          ),
+                          backgroundColor: Colors.blue,
+                        ),
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('Voice Calls'),
-                      style: TextButton.styleFrom(
-                        textStyle: const TextStyle(
-                          fontSize: 20,
+                    SizedBox(
+                      width: 160,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text('Recently Added'),
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(
+                            fontSize: 20,
+                          ),
+                          backgroundColor: Colors.white,
                         ),
-                        backgroundColor: Colors.white,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('Video Calls'),
-                      style: TextButton.styleFrom(
-                        textStyle: const TextStyle(
-                          fontSize: 20,
-                        ),
-                        backgroundColor: Colors.white,
                       ),
                     ),
                   ],
@@ -119,34 +124,46 @@ class ChatsScreen extends StatelessWidget {
                     child: ListView(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
-                      children: const <Widget>[
-                        MessageBody(
-                            name: 'Cristiano Santos',
-                            message: 'small message preview'),
-                        MessagesDivider(),
-                        MessageBody(
-                            name: 'Darlene Steward',
-                            message: 'small message preview'),
-                        MessagesDivider(),
-                        MessageBody(
-                            name: 'Darlene Steward',
-                            message: 'small message preview'),
-                        MessagesDivider(),
-                        MessageBody(
-                            name: 'Darlene Steward',
-                            message: 'small message preview'),
-                        MessagesDivider(),
-                        MessageBody(
-                            name: 'Darlene Steward',
-                            message: 'small message preview'),
-                        MessagesDivider(),
-                        MessageBody(
-                            name: 'Darlene Steward',
-                            message: 'small message preview'),
-                        MessagesDivider(),
-                        MessageBody(
-                            name: 'Darlene Steward',
-                            message: 'small message preview'),
+                      children: <Widget>[
+                        ContactBody(
+                          name: 'Cristiano Santos',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
+                          name: 'Cristiano Santos',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
+                          name: 'Cristiano Santos',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
+                          name: 'Cristiano Santos',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
+                          name: 'Cristiano Santos',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
+                          name: 'Cristiano Santos',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
+                          name: 'Cristiano Santos',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
+                          name: 'Cristiano Santos',
+                          url: Helper.randomPictureUrl(),
+                        ),
                       ],
                     ),
                   ),
@@ -172,7 +189,9 @@ class ChatsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/chats');
+                    },
                     style: ElevatedButton.styleFrom(
                         primary: Colors.grey.shade300, elevation: 0),
                     child: Column(
@@ -181,37 +200,14 @@ class ChatsScreen extends StatelessWidget {
                         Icon(
                           Icons.message,
                           size: 40,
-                          color: Colors.blue,
+                          color: AppColors.kIconDark,
                         ),
                         Text(
                           'Chat List',
-                          style: TextStyle(fontSize: 20, color: Colors.blue),
+                          style: TextStyle(
+                              fontSize: 20, color: AppColors.kTextDark),
                         ),
                       ],
-                    ),
-                  ),
-                  Container(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/contacts');
-                      },
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.grey.shade300, elevation: 0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          Icon(
-                            Icons.contact_page_outlined,
-                            size: 40,
-                            color: AppColors.kIconDark,
-                          ),
-                          Text(
-                            'Contacts',
-                            style: TextStyle(
-                                fontSize: 20, color: AppColors.kTextDark),
-                          ),
-                        ],
-                      ),
                     ),
                   ),
                   Container(
@@ -223,41 +219,58 @@ class ChatsScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: const [
                           Icon(
-                            Icons.account_circle,
+                            Icons.contact_page_outlined,
                             size: 40,
-                            color: AppColors.kIconDark,
+                            color: Colors.blue,
                           ),
                           Text(
-                            'Profile',
-                            style: TextStyle(
-                                fontSize: 20, color: AppColors.kTextDark),
+                            'Contacts',
+                            style: TextStyle(fontSize: 20, color: Colors.blue),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  Container(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        print('helper');
-                      },
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.grey.shade300, elevation: 0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          Icon(
-                            Icons.help_center,
-                            size: 40,
-                            color: AppColors.kIconDark,
-                          ),
-                          Text(
-                            'Helper',
-                            style: TextStyle(
-                                fontSize: 20, color: AppColors.kTextDark),
-                          ),
-                        ],
-                      ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.grey.shade300, elevation: 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Icon(
+                          Icons.account_circle,
+                          size: 40,
+                          color: AppColors.kIconDark,
+                        ),
+                        Text(
+                          'Profile',
+                          style: TextStyle(
+                              fontSize: 20, color: AppColors.kTextDark),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('helper');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.grey.shade300, elevation: 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Icon(
+                          Icons.help_center,
+                          size: 40,
+                          color: AppColors.kIconDark,
+                        ),
+                        Text(
+                          'Helper',
+                          style: TextStyle(
+                              fontSize: 20, color: AppColors.kTextDark),
+                        ),
+                      ],
                     ),
                   ),
                 ],

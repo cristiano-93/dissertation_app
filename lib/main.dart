@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
         '/chats': (context) => const ChatsScreen(),
+        '/contacts': (context) => const ContactsScreen(),
+        '/message': (context) => const MessageScreen(),
         '/test': (context) => TestScreen(),
       },
     );

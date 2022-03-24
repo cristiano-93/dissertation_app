@@ -58,7 +58,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 50.0),
                           ElevatedButton(
-                            style: ThemeHelper().buttonStyle(),
+                            style: Helper().buttonStyle(),
                             child: const Padding(
                               padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(

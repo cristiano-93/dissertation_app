@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               ElevatedButton(
-                                style: ThemeHelper().buttonStyle(),
+                                style: Helper().buttonStyle(),
                                 child: const Padding(
                                   padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
                                   child: Text(
@@ -69,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                                 },
                               ),
                               ElevatedButton(
-                                style: ThemeHelper().buttonStyle(),
+                                style: Helper().buttonStyle(),
                                 child: const Padding(
                                   padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
                                   child: Text(
