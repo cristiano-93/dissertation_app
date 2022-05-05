@@ -152,7 +152,7 @@ class ChatsScreen extends StatelessWidget {
             ),
             Container(
               // listview container
-              height: 703,
+              height: 717,
               margin: const EdgeInsets.symmetric(horizontal: 70),
               decoration: BoxDecoration(
                 color: Colors.grey.shade300,
@@ -160,12 +160,12 @@ class ChatsScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Container(
-                    height: 663,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.only(bottom: 10),
+                  Expanded(
+                    // height: 663,
+                    // decoration: BoxDecoration(
+                    //   borderRadius: BorderRadius.circular(10),
+                    // ),
+                    // padding: const EdgeInsets.only(bottom: 10),
                     child: ListView(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -214,7 +214,7 @@ class ChatsScreen extends StatelessWidget {
               // container for the bottom toolbar
               height: 80,
               margin: const EdgeInsets.only(
-                  left: 50, right: 50, top: 100, bottom: 10),
+                  left: 50, right: 50, top: 50, bottom: 10),
               decoration: BoxDecoration(
                 color: Colors.grey.shade300,
                 borderRadius: BorderRadius.circular(10),

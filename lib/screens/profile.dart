@@ -282,7 +282,7 @@ class _ProfileState extends State<Profile> {
                 // container for the bottom toolbar
                 height: 80,
                 margin: const EdgeInsets.only(
-                    left: 50, right: 50, top: 100, bottom: 10),
+                    left: 50, right: 50, top: 100, bottom: 15),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   borderRadius: BorderRadius.circular(10),

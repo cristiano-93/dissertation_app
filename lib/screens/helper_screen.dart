@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:social_app2/widgets.dart';
 //import 'package:giffy_dialog/giffy_dialog.dart';
+import 'package:giff_dialog/giff_dialog.dart';
 
 import '../helper.dart';
 import '../main.dart';
@@ -57,8 +58,8 @@ class HelperPage extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Column(
-              children: [
-                const Center(
+              children: const [
+                Center(
                   child: Text(
                     "Hello,",
                     style: TextStyle(color: Colors.black, fontSize: 16),
@@ -91,8 +92,8 @@ class HelperPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: getheight(context, 75)),
-          Container(
-            height: 772,
+          Expanded(
+            //height: 772,
             child: Column(
               children: [
                 Container(
@@ -104,16 +105,16 @@ class HelperPage extends StatelessWidget {
                         height: 50,
                         child: TextButton(
                           onPressed: () {
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (_) => AssetGiffyDialog(
-                            //     image: calling,
-                            //     title: Text(''),
-                            //     description: Text(''),
-                            //     entryAnimation: EntryAnimation.BOTTOM,
-                            //     onOkButtonPressed: () {},
-                            //   ),
-                            // );
+                            showDialog(
+                              context: context,
+                              builder: (_) => AssetGiffDialog(
+                                image: calling,
+                                title: Text(''),
+                                description: Text(''),
+                                entryAnimation: EntryAnimation.bottom,
+                                onOkButtonPressed: () {},
+                              ),
+                            );
                           },
                           child: Container(
                             width: getwidth(context, 350),
@@ -243,7 +244,7 @@ class HelperPage extends StatelessWidget {
             // container for the bottom toolbar
             height: 80,
             margin: const EdgeInsets.only(
-                left: 50, right: 50, top: 100, bottom: 10),
+                left: 50, right: 50, top: 100, bottom: 15),
             decoration: BoxDecoration(
               color: Colors.grey.shade300,
               borderRadius: BorderRadius.circular(10),
