@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-import '../components/avatar.dart';
-import '../components/elements.dart';
-import '../components/helper.dart';
+import '../elements.dart';
+import '../helper.dart';
+import '../model/avatar.dart';
 import '../theme.dart';
+import '../widgets.dart';
 
 class MessageScreen extends StatelessWidget {
   const MessageScreen({Key? key}) : super(key: key);
@@ -15,31 +18,63 @@ class MessageScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
+          toolbarHeight: 70,
           backgroundColor: Colors.grey.shade300,
           title: const Text(
-            'Message Page',
+            'Contact List',
             style: TextStyle(
               color: AppColors.kTextDark,
-              fontSize: 20,
+              fontSize: 30,
             ),
           ),
           actions: [
-            ElevatedButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              child: const Text(
-                'Sign Out',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+            SizedBox(
+              height: 40,
+              child: TextButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  GoogleSignIn().signOut();
+                  Navigator.pushReplacementNamed(context, '/login');
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: const Text(
+                    "Sign Out",
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
+                ),
               ),
             ),
-            Avatar.medium(url: Helper.randomPictureUrl())
+            SizedBox(width: getwidth(context, 10)),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Column(
+                children: [
+                  const Center(
+                    child: Text(
+                      "Hello,",
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                    ),
+                  ),
+                  Text(
+                    'Cristiano',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(5),
+              child: Avatar.medium(
+                url: Helper.randomPictureUrl(),
+              ),
+            ),
           ],
         ),
         body: Column(
@@ -96,7 +131,7 @@ class MessageScreen extends StatelessWidget {
                               color: AppColors.kIconDark,
                             ),
                             Text(
-                              'Test Page',
+                              'Voice Call',
                               style: TextStyle(color: AppColors.kTextDark),
                             ),
                           ],
@@ -139,7 +174,7 @@ class MessageScreen extends StatelessWidget {
               ),
             ),
             Container(
-              height: 800,
+              height: 860,
               margin: const EdgeInsets.all(10),
               child: ListView(
                 padding:
@@ -197,7 +232,8 @@ class MessageScreen extends StatelessWidget {
             Container(
               // container for the bottom toolbar
               height: 80,
-              margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              margin: const EdgeInsets.only(
+                  left: 50, right: 50, top: 30, bottom: 16),
               decoration: BoxDecoration(
                 color: Colors.grey.shade300,
                 borderRadius: BorderRadius.circular(10),
@@ -207,7 +243,7 @@ class MessageScreen extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/chats');
+                      Navigator.pushNamed(context, '/new_chat_screen');
                     },
                     style: ElevatedButton.styleFrom(
                         primary: Colors.grey.shade300, elevation: 0),
@@ -229,7 +265,7 @@ class MessageScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/contacts');
+                      Navigator.pushNamed(context, '/new_contacts_screen');
                     },
                     style: ElevatedButton.styleFrom(
                         primary: Colors.grey.shade300, elevation: 0),
@@ -244,13 +280,15 @@ class MessageScreen extends StatelessWidget {
                         Text(
                           'Contacts',
                           style: TextStyle(
-                              fontSize: 20, color: AppColors.kIconDark),
+                              fontSize: 20, color: AppColors.kTextDark),
                         ),
                       ],
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/profile');
+                    },
                     style: ElevatedButton.styleFrom(
                         primary: Colors.grey.shade300, elevation: 0),
                     child: Column(
@@ -264,14 +302,14 @@ class MessageScreen extends StatelessWidget {
                         Text(
                           'Profile',
                           style: TextStyle(
-                              fontSize: 20, color: AppColors.kTextDark),
+                              fontSize: 20, color: AppColors.kIconDark),
                         ),
                       ],
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      print('helper');
+                      Navigator.pushNamed(context, '/helper');
                     },
                     style: ElevatedButton.styleFrom(
                         primary: Colors.grey.shade300, elevation: 0),
@@ -293,7 +331,7 @@ class MessageScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),

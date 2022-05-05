@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "338405617619",
+    "project_id": "socialapp2-83822",
+    "storage_bucket": "socialapp2-83822.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338405617619:android:07d327cb4b44c34f2c4926",
+        "android_client_info": {
+          "package_name": "cristiano.com.social_app2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338405617619-0ctr5d70uot2dqb6on92knlfovg62klb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFqoWHDOcZOQWnudyXKeNMcXeVihfgS4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338405617619-0ctr5d70uot2dqb6on92knlfovg62klb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

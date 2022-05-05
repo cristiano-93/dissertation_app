@@ -1,11 +1,16 @@
-import 'package:dissertation_app/components/avatar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:dissertation_app/theme.dart';
-import '../components/components.dart';
+import '../elements.dart';
+import '../helper.dart';
+import '../main.dart';
+import '../model/avatar.dart';
+import '../theme.dart';
+import '../widgets.dart';
 
 class ContactsScreen extends StatelessWidget {
-  const ContactsScreen({Key? key}) : super(key: key);
+  ContactsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,31 +18,63 @@ class ContactsScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
+          toolbarHeight: 70,
           backgroundColor: Colors.grey.shade300,
           title: const Text(
             'Contact List',
             style: TextStyle(
               color: AppColors.kTextDark,
-              fontSize: 20,
+              fontSize: 30,
             ),
           ),
           actions: [
-            ElevatedButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              child: const Text(
-                'Sign Out',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+            SizedBox(
+              height: 40,
+              child: TextButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  GoogleSignIn().signOut();
+                  Navigator.pushReplacementNamed(context, '/login');
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: const Text(
+                    "Sign Out",
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
+                ),
               ),
             ),
-            Avatar.medium(url: Helper.randomPictureUrl())
+            SizedBox(width: getwidth(context, 10)),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Column(
+                children: [
+                  const Center(
+                    child: Text(
+                      "Hello,",
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                    ),
+                  ),
+                  Text(
+                    'Cristiano',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(5),
+              child: Avatar.medium(
+                url: Helper.randomPictureUrl(),
+              ),
+            ),
           ],
         ),
         body: Column(
@@ -47,7 +84,7 @@ class ContactsScreen extends StatelessWidget {
               margin: const EdgeInsets.all(60),
               child: const Center(
                 child: Text(
-                  'Contacts List',
+                  'Contacts',
                   style: TextStyle(
                     fontSize: 40,
                     color: AppColors.kTextDark,
@@ -107,7 +144,7 @@ class ContactsScreen extends StatelessWidget {
             ),
             Container(
               // listview container
-              height: 800,
+              height: 703,
               margin: const EdgeInsets.symmetric(horizontal: 70),
               decoration: BoxDecoration(
                 color: Colors.grey.shade300,
@@ -116,7 +153,7 @@ class ContactsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    height: 760,
+                    height: 663,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -131,37 +168,37 @@ class ContactsScreen extends StatelessWidget {
                         ),
                         const MessagesDivider(),
                         ContactBody(
-                          name: 'Cristiano Santos',
+                          name: 'Darlene Steward',
                           url: Helper.randomPictureUrl(),
                         ),
                         const MessagesDivider(),
                         ContactBody(
-                          name: 'Cristiano Santos',
+                          name: 'Andy',
                           url: Helper.randomPictureUrl(),
                         ),
                         const MessagesDivider(),
                         ContactBody(
-                          name: 'Cristiano Santos',
+                          name: 'Josh',
                           url: Helper.randomPictureUrl(),
                         ),
                         const MessagesDivider(),
                         ContactBody(
-                          name: 'Cristiano Santos',
+                          name: 'Andrew Garfield',
                           url: Helper.randomPictureUrl(),
                         ),
                         const MessagesDivider(),
                         ContactBody(
-                          name: 'Cristiano Santos',
+                          name: 'John Depp',
                           url: Helper.randomPictureUrl(),
                         ),
                         const MessagesDivider(),
                         ContactBody(
-                          name: 'Cristiano Santos',
+                          name: 'Barack Obama',
                           url: Helper.randomPictureUrl(),
                         ),
                         const MessagesDivider(),
                         ContactBody(
-                          name: 'Cristiano Santos',
+                          name: 'Donald Trump',
                           url: Helper.randomPictureUrl(),
                         ),
                       ],
@@ -180,7 +217,8 @@ class ContactsScreen extends StatelessWidget {
             Container(
               // container for the bottom toolbar
               height: 80,
-              margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              margin: const EdgeInsets.only(
+                  left: 50, right: 50, top: 100, bottom: 10),
               decoration: BoxDecoration(
                 color: Colors.grey.shade300,
                 borderRadius: BorderRadius.circular(10),
@@ -190,7 +228,7 @@ class ContactsScreen extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/chats');
+                      Navigator.pushNamed(context, '/new_chat_screen');
                     },
                     style: ElevatedButton.styleFrom(
                         primary: Colors.grey.shade300, elevation: 0),
@@ -210,29 +248,31 @@ class ContactsScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.grey.shade300, elevation: 0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          Icon(
-                            Icons.contact_page_outlined,
-                            size: 40,
-                            color: Colors.blue,
-                          ),
-                          Text(
-                            'Contacts',
-                            style: TextStyle(fontSize: 20, color: Colors.blue),
-                          ),
-                        ],
-                      ),
+                  ElevatedButton(
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/new_contacts_screen');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.grey.shade300, elevation: 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Icon(
+                          Icons.contact_page_outlined,
+                          size: 40,
+                          color: Colors.blue,
+                        ),
+                        Text(
+                          'Contacts',
+                          style: TextStyle(fontSize: 20, color: Colors.blue),
+                        ),
+                      ],
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/profile');
+                    },
                     style: ElevatedButton.styleFrom(
                         primary: Colors.grey.shade300, elevation: 0),
                     child: Column(
@@ -253,7 +293,7 @@ class ContactsScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      print('helper');
+                      Navigator.pushNamed(context, '/helper');
                     },
                     style: ElevatedButton.styleFrom(
                         primary: Colors.grey.shade300, elevation: 0),
@@ -275,7 +315,7 @@ class ContactsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),

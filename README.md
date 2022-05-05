@@ -1,6 +1,6 @@
-# dissertation_app
+# social_app2
 
-A new Flutter project.
+v2 for diss social app
 
 ## Getting Started
 

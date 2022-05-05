@@ -1,25 +1,45 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:dissertation_app/screens/screens.dart';
-import 'theme.dart';
+import 'package:social_app2/loading_page.dart';
+import 'package:social_app2/screens/screens.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  await Firebase.initializeApp();
+
+  runApp(MyApp());
+}
+
+//late currentUser appuser;
+//late currentUser appuser = currentUser(name: "", email: "", uid: "");
+
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String initial = '/login';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Chatter',
-      initialRoute: '/login',
       routes: {
-        '/login': (context) => const LoginScreen(),
-        '/register': (context) => const RegisterScreen(),
-        '/chats': (context) => const ChatsScreen(),
-        '/contacts': (context) => const ContactsScreen(),
-        '/message': (context) => const MessageScreen(),
-        '/test': (context) => TestScreen(),
+        '/login': (context) => LogIn(),
+        '/register': (context) => Register(),
+        '/profile': (context) => Profile(),
+        '/loading': (context) => LoadingPage(),
+        '/new_chat_screen': (context) => ChatsScreen(),
+        '/new_message_screen': (context) => MessageScreen(),
+        '/new_contacts_screen': (context) => ContactsScreen(),
+        '/helper': (context) => HelperPage(),
       },
+      initialRoute: initial,
     );
   }
 }
