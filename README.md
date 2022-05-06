@@ -1,16 +1,22 @@
-# social_app2
+# Social app
 
-v2 for diss social app
+## Description
+The goal of this app is to be simple and easy to use because the target group is people 65+.
+This app should help the user get familiar with the basic features of a social media app so that they can more easily adapt to a more complex app like Facebook.
+This app was designed for tablet devices.
 
-## Getting Started
+## Executing this project
 
-This project is a starting point for a Flutter application.
+In order to run this project on a computer, the following tools will be needed:
+- Android Studio
+- Dart package installed
+- Android device emulator
 
-A few resources to get you started if this is your first Flutter project:
+While there is a .apk file available to install on a physical device, due to an oversight during development, 
+    the UI elements in the app where given fixed heights and widths which caused them to be out of place when run on a different sized screen.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### For this reason, it is recommended that this project is run on Android studio emulator using the 10.1 WXGA Tablet with android 9.0 and API 28.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This sizing problem will be addressed once this project has been graded so that it is compatible with different sized tablet devices.
+
+

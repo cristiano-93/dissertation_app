@@ -163,6 +163,21 @@ class ContactsScreen extends StatelessWidget {
                           horizontal: 20, vertical: 10),
                       children: <Widget>[
                         ContactBody(
+                          name: 'Andrew Garfield',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
+                          name: 'Andy',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
+                          name: 'Barack Obama',
+                          url: Helper.randomPictureUrl(),
+                        ),
+                        const MessagesDivider(),
+                        ContactBody(
                           name: 'Cristiano Santos',
                           url: Helper.randomPictureUrl(),
                         ),
@@ -173,7 +188,7 @@ class ContactsScreen extends StatelessWidget {
                         ),
                         const MessagesDivider(),
                         ContactBody(
-                          name: 'Andy',
+                          name: 'Donald Trump',
                           url: Helper.randomPictureUrl(),
                         ),
                         const MessagesDivider(),
@@ -183,22 +198,7 @@ class ContactsScreen extends StatelessWidget {
                         ),
                         const MessagesDivider(),
                         ContactBody(
-                          name: 'Andrew Garfield',
-                          url: Helper.randomPictureUrl(),
-                        ),
-                        const MessagesDivider(),
-                        ContactBody(
                           name: 'John Depp',
-                          url: Helper.randomPictureUrl(),
-                        ),
-                        const MessagesDivider(),
-                        ContactBody(
-                          name: 'Barack Obama',
-                          url: Helper.randomPictureUrl(),
-                        ),
-                        const MessagesDivider(),
-                        ContactBody(
-                          name: 'Donald Trump',
                           url: Helper.randomPictureUrl(),
                         ),
                       ],
