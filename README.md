@@ -1,5 +1,8 @@
 # Social app
 
+## Link to Figma design prototype
+https://www.figma.com/file/oyfrxUYlYbYwoMMPgBM3XI/SocialApp?node-id=1%3A45
+
 ## Description
 The goal of this app is to be simple and easy to use because the target group is people 65+.
 This app should help the user get familiar with the basic features of a social media app so that they can more easily adapt to a more complex app like Facebook.
